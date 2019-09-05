@@ -43,13 +43,16 @@ audioJaneladoFrequencia = fft(audioJaneladoTempo);
 n = length(audioOriginalTempo);
 
 %A frequência de range
-%f = (-n/2:n/2-1)*(Fs/n);      
-f = (0:length(audioOriginalTempo)-1) * (Fs/n)
+f = (-n/2:n/2-1)*(Fs/n);      
+%f = (0:n-1) * (Fs/n)
 
 %Calcula o módulo tirado a parte conjugada(fase) da transformada
 audioOriginalFrequenciaE = abs(audioOriginalFrequencia).^2/n;    
 audioJaneladoFrequenciaE = abs(audioJaneladoFrequencia).^2/n;    
 
+%Desloca na frequência para mostrar em 0Hz
+audioOriginalFrequenciaE =fftshift(audioOriginalFrequenciaE)
+audioJaneladoFrequenciaE =fftshift(audioJaneladoFrequenciaE)
 
 %OPÇÕES DE VISUALIZAÇÃO DE RESULTADOS===============================
 escolha = 1;
@@ -90,6 +93,5 @@ while escolha ~= 5
         axis tight, title('Áudio janelado (Tempo)'),
         xlabel('tempo(s)')
         ylabel('g(t)')      
-    end
-    
+    end 
 end
