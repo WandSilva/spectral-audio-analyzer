@@ -4,7 +4,7 @@ clear;
 %Frequência de amostragem igual a 8kHz, números de bits da codificação e
 %numeros de canais(estéreo)
 Fs = 8000;
-nbits = 8;
+nbits = 16;
 ch = 1;
 
 escolha = 0;
@@ -63,35 +63,38 @@ while escolha ~= 5
         sound(audioOriginalTempo);
     elseif escolha == 2
         subplot(211), plot(audioOriginalTempo, 'b'),
-        axis tight, title('Áudio original (Tempo)'),
-        xlabel('tempo(s)')
+        axis tight, title('Sinal original (Tempo)'),
+        xlabel('n')
         ylabel('x(t)')
+        set(gca,'XTick',[])
 
-        subplot(212), plot(f, audioOriginalFrequenciaE, 'b'),
-        legend('Normal'),
-        axis tight, title('Áudio no domínio da Frequência'),
+        subplot(212), plot(f, audioOriginalFrequenciaE, 'b'),       
+        axis tight, title('Sinal no domínio da Frequência'),
         xlabel('Frequência(Hz)')
         ylabel('Amplitude')
     elseif escolha == 3
         subplot(211), plot(audioJaneladoTempo, 'b'),
-        axis tight, title('Áudio Janelado (Tempo)'),
-        xlabel('tempo(s)')
+        axis tight, title('Sinal Janelado (Tempo)'),
+        xlabel('n')
         ylabel('x(t)')
+        set(gca,'XTick',[])
 
-        subplot(212), plot(f, audioJaneladoFrequenciaE, 'b'),
-        legend('Normal'),
-        axis tight, title('Áudio no domínio da Frequência'),
+        subplot(212), plot(f, audioJaneladoFrequenciaE, 'b'),      
+        axis tight, title('Sinal no domínio da Frequência'),
         xlabel('Frequência(Hz)')
         ylabel('Amplitude')
     elseif escolha == 4
         subplot(211), plot(audioOriginalTempo, 'b'),
-        axis tight, title('Áudio original (Tempo)'),
-        xlabel('tempo(s)')
+        axis tight, title('Sinal original (tempo)'),
+        xlabel('n')
         ylabel('x(t)')
+        set(gca,'XTick',[])
         
         subplot(212), plot(audioJaneladoTempo, 'b'),
-        axis tight, title('Áudio janelado (Tempo)'),
-        xlabel('tempo(s)')
-        ylabel('g(t)')      
-    end 
+        axis tight, title('Sinal janelado (Tempo)'),
+        xlabel('n')
+        ylabel('g(t)')  
+        set(gca,'XTick',[])
+    end
+    
 end
