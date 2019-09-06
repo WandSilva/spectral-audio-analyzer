@@ -23,16 +23,16 @@ while escolha ~= 10
         input('');
         %Armazena a amplitude do sinal em cada instante de gravação
         audioOriginalTempo = getaudiodata(objetoGravacao);
-        escolha = 10
+        escolha = 10;
     elseif escolha == 2
-        [audioOriginalTempo,Fs] = audioread('sinal1.wav')
-        escolha = 10
+        [audioOriginalTempo,Fs] = audioread('sinal1.wav');
+        escolha = 10;
 
     end
 end
 
 %JANELAMENTO DO AUDIO===============================================
-audioJaneladoTempo = audioOriginalTempo .* hamming(length(audioOriginalTempo),'periodic')
+audioJaneladoTempo = audioOriginalTempo .* hamming(length(audioOriginalTempo),'periodic');
 
 %TRANSFORMADA DO ÁUDIO============================================
 %Calcula a FFT
@@ -47,12 +47,12 @@ f = (-n/2:n/2-1)*(Fs/n);
 %f = (0:n-1) * (Fs/n)
 
 %Calcula o módulo tirado a parte conjugada(fase) da transformada
-audioOriginalFrequenciaE = abs(audioOriginalFrequencia).^2/n;    
-audioJaneladoFrequenciaE = abs(audioJaneladoFrequencia).^2/n;    
+audioOriginalFrequenciaE = abs(audioOriginalFrequencia);%.^2/n;    
+audioJaneladoFrequenciaE = abs(audioJaneladoFrequencia);%.^2/n;    
 
 %Desloca na frequência para mostrar em 0Hz
-audioOriginalFrequenciaE =fftshift(audioOriginalFrequenciaE)
-audioJaneladoFrequenciaE =fftshift(audioJaneladoFrequenciaE)
+audioOriginalFrequenciaE =fftshift(audioOriginalFrequenciaE);
+audioJaneladoFrequenciaE =fftshift(audioJaneladoFrequenciaE);
 
 %OPÇÕES DE VISUALIZAÇÃO DE RESULTADOS===============================
 escolha = 1;
